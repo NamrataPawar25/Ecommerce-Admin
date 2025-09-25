@@ -6,7 +6,7 @@ const NavbarTop = () => {
   const { loggedUser, logout } = useContext(AuthContext)
 
   return (
-    <nav className="navbar navbar-light bg-light px-3">
+    <nav className="navbar navbar-light bg-warning px-3">
       {/* Logo / Brand */}
       <Link className="navbar-brand" to="/dashboard">
         ECOMMERCE

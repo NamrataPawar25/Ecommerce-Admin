@@ -10,22 +10,22 @@ const Navbar = () => {
       >
         <ul className="navbar-nav flex-column w-100">
           <li className="nav-item">
-            <Link className="nav-link active" to="#">
+            <Link className="nav-link active" to="/category-list">
               Category
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/create-category">
               Create Category
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/brand-list">
               Brand
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/create-brand">
               Create Brand
             </Link>
           </li>
@@ -37,10 +37,10 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      <div className="flex-grow-1 p-4">
+      {/* <div className="flex-grow-1 p-4">
         <h2>Main Content Area</h2>
         <p>This is where your page content will appear.</p>
-      </div>
+      </div> */}
     </div>
   );
 };
