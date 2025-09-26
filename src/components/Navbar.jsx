@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="d-flex">
       <nav
-        className="navbar navbar-expand-lg navbar-light bg-light flex-column vh-100 p-3"
+        className="navbar navbar-expand-lg navbar-dark bg-dark flex-column vh-100 p-3"
         style={{"width": "250px"}}
       >
         <ul className="navbar-nav flex-column w-100">

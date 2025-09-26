@@ -26,10 +26,10 @@ const NavbarTop = () => {
           </>
         ) : (
           <>
-            <Link className="btn btn-sm btn-outline-primary me-2" to="/login">
+            <Link className="btn btn-sm btn-outline-dark me-2" to="/">
               Login
             </Link>
-            <Link className="btn btn-sm btn-primary" to="/register">
+            <Link className="btn btn-sm btn-dark" to="/register">
               Register
             </Link>
           </>

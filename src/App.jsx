@@ -1,12 +1,10 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import Navbar from "./components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthProvider";
+
+import Navbar from "./components/Navbar";
 import NavbarTop from "./components/NavbarTop";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
@@ -16,36 +14,72 @@ import CategoryList from "./pages/CategoryList";
 import BrandList from "./pages/BrandList";
 import CreateBrand from "./pages/CreateBrand";
 
-function App() {
-  const [isRegister, setIsRegister] = useState(false);
+// Layout wrapper for dashboard pages
+function DashboardLayout({ children }) {
   return (
     <>
-      <BrowserRouter>
-        <AuthProvider>
-          <NavbarTop />
-          <div className="d-flex">
-            {/* Sidebar */}
-            <Navbar />
-
-            {/* Main content area */}
-            <div className="flex-grow-1 p-4">
-              <Routes>
-                <Route path="/" element={<Login />} />
-                <Route
-                  path="/register"
-                  element={<Registration setIsRegister={setIsRegister} />}
-                />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/category-list" element={<CategoryList />} />
-                <Route path="/create-category" element={<CreateCategory />} />
-                <Route path="/brand-list" element={<BrandList />} />
-                <Route path="/create-brand" element={<CreateBrand />} />
-              </Routes>
-            </div>
-          </div>
-        </AuthProvider>
-      </BrowserRouter>
+      <NavbarTop />
+      <div className="d-flex">
+        <Navbar />
+        <div className="flex-grow-1 p-4">{children}</div>
+      </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+
+          {/* Dashboard routes inside layout */}
+          <Route
+            path="/dashboard"
+            element={
+              <DashboardLayout>
+                <Dashboard />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/category-list"
+            element={
+              <DashboardLayout>
+                <CategoryList />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/create-category"
+            element={
+              <DashboardLayout>
+                <CreateCategory />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/brand-list"
+            element={
+              <DashboardLayout>
+                <BrandList />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/create-brand"
+            element={
+              <DashboardLayout>
+                <CreateBrand />
+              </DashboardLayout>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
